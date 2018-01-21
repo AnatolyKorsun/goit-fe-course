@@ -1,0 +1,165 @@
+.page{
+    padding-top: 230px;
+    min-height: 100vh;
+    background-image: url(../images/images1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.wrapper{
+    background-color: #fff;
+    margin: auto;
+    width: 1024px;
+    padding: 120px 60px;
+    font-family: Pathway Gothic One;
+    font-size: 13px;
+}
+
+/* story */
+.story{
+    display: inline-block;
+    width:580px;
+    vertical-align: top; 
+    margin-right: 50px;
+}
+h2{
+    font-size: 32px;
+    font-weight: lighter;
+    color: rgb(38, 53, 85);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+img{
+    display: block;
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    width: 360px;
+    height: 280px;
+    object-fit: cover;
+}
+.caption{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(38, 53, 85);
+    margin-bottom: 20px;
+}
+p{
+    color: rgb(80, 80, 80);
+}
+.story p:last-child{
+    margin-bottom: 0px;
+}
+.clearfix::after{
+    display: table;
+    content: "";
+    clear: both;
+}
+ 
+/* menu */
+
+.menu{
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+    counter-reset: post-number;
+}
+.submenu{
+    /* display: inline-block; */
+    counter-increment: post-number; 
+    margin-bottom: 30px;   
+}
+.submenu:last-child{
+    margin-bottom: 0px;
+}
+.caption h3{
+    /* display: inline-block; */
+    /* vertical-align: center; */
+}
+.count-sub li::before{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    content: counter(post-number);
+    float: left;
+    margin-right: 10px;
+    background-color: rgb(56, 175, 229);
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgb(57, 119, 143);
+    vertical-align: middle;
+
+}
+.submenu li{
+    display: inline-block;
+    vertical-align: middle;
+}
+.box{
+    margin-bottom: 60px;
+}
+.box:last-child{
+    margin-bottom: opx;
+}
+/* offers */
+.offers{
+    display: inline-block;
+    width:580px;
+    vertical-align: top; 
+    margin-right: 50px;
+}
+
+.list{
+    column-count: 2;
+    font-size: 15px;
+    font-weight: 700;
+    padding-top: 15px;
+}
+.list li::before{
+    /* display: inline-block; */
+    vertical-align: middle;  
+    content: "\2192";
+    width: 15px;
+    height: 15px;
+    color: rgb(74, 153, 189);
+    margin-right: 15px;
+    
+
+}
+
+.list li{
+    /* display: inline-block; */
+    vertical-align: middle;   
+    font-weight: bold;
+    color: rgb(38, 53, 85);
+    margin-bottom: 20px;
+}
+.list li:last-child{
+    margin-bottom: 0px;
+}
+
+/* memo */
+
+.memo{
+    display: inline-block;
+    width: 200px;
+    vertical-align: top;
+}
+.memo p{
+    display: inline-block;
+}
+.memo p::before{
+    display: inline-block;
+    contain: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+.memo p::after{
+    display: inline-block;
+    contain: "";
+    width: 10px;
+    height: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
