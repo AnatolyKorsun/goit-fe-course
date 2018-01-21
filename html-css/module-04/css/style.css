@@ -10,30 +10,35 @@
     background-color: #fff;
     margin: auto;
     width: 1024px;
-    padding: 120px 60px;
+    padding: 115px 60px;
     font-family: Pathway Gothic One;
     font-size: 13px;
 }
 
+
+
 /* story */
+
+
+
 .story{
     display: inline-block;
-    width:580px;
+    width:640px;
     vertical-align: top; 
-    margin-right: 50px;
+    margin-right: 40px;
 }
 h2{
     font-size: 32px;
     font-weight: lighter;
     color: rgb(38, 53, 85);
     text-transform: uppercase;
-    margin-bottom: 50px;
+    margin-bottom: 45px;
 }
 img{
     display: block;
     float: left;
-    margin-right: 25px;
-    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
     width: 360px;
     height: 280px;
     object-fit: cover;
@@ -56,88 +61,105 @@ p{
     clear: both;
 }
  
-/* menu */
 
-.menu{
+
+/* menu */
+.menu{ 
     display: inline-block;
     width: 200px;
     vertical-align: top;
     counter-reset: post-number;
+    text-align: right;
 }
+
 .submenu{
-    /* display: inline-block; */
-    counter-increment: post-number; 
+    display: inline-block;
+    width: 200px;
+    vertical-align: middle;
+    text-align: left;
     margin-bottom: 30px;   
 }
 .submenu:last-child{
     margin-bottom: 0px;
 }
-.caption h3{
-    /* display: inline-block; */
-    /* vertical-align: center; */
+.submenu h3{
+    display: block;
+    vertical-align: middle;
+    counter-increment: post-number; 
+    
 }
-.count-sub li::before{
+.submenu h3::before{
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     content: counter(post-number);
-    float: left;
-    margin-right: 10px;
+    text-align: center;
+    margin-right: 10px; 
     background-color: rgb(56, 175, 229);
     border-radius: 15px;
     border-style: solid;
     border-color: rgb(57, 119, 143);
-    vertical-align: middle;
+    vertical-align: top;
+}
+.submenu p{
+    display: block;
+    width: 165px;
+    margin-left: auto;
+    text-align: left;
+}
 
-}
-.submenu li{
-    display: inline-block;
-    vertical-align: middle;
-}
+
+
+
 .box{
     margin-bottom: 60px;
 }
 .box:last-child{
-    margin-bottom: opx;
+    margin-bottom: 0px;
 }
+
+
+
 /* offers */
 .offers{
     display: inline-block;
-    width:580px;
+    width:640px;
     vertical-align: top; 
-    margin-right: 50px;
+    margin-right: 40px;
 }
 
 .list{
     column-count: 2;
     font-size: 15px;
     font-weight: 700;
-    padding-top: 15px;
+    padding-top: 35px;
+}
+a{
+    text-decoration: none;
 }
 .list li::before{
-    /* display: inline-block; */
+    display: inline-block;
     vertical-align: middle;  
-    content: "\2192";
+    content: "\279d";
     width: 15px;
     height: 15px;
     color: rgb(74, 153, 189);
-    margin-right: 15px;
-    
-
+    margin-right: 15px; 
 }
-
 .list li{
-    /* display: inline-block; */
-    vertical-align: middle;   
     font-weight: bold;
     color: rgb(38, 53, 85);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .list li:last-child{
     margin-bottom: 0px;
 }
 
+
+
 /* memo */
+
+
 
 .memo{
     display: inline-block;
@@ -149,15 +171,15 @@ p{
 }
 .memo p::before{
     display: inline-block;
-    contain: "";
-    width: 10px;
-    height: 10px;
+    content: "\201c";
+    width: 5px;
+    height: 5px;
     margin-right: 4px;
     vertical-align: middle;
 }
 .memo p::after{
     display: inline-block;
-    contain: "";
+    content: "\201d";
     width: 10px;
     height: 10px;
     margin-left: 4px;
