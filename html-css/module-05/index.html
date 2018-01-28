@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Dorsa" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link rel="stylesheet" href="css/style.css">
+    <title>module-05</title>
+</head>
+<body class="page">
+    <header class="header">
+        <nav class="menu">
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >home</a></li>
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >about</a>
+                <ul class="submenu">
+                    <li class="submenu-link"><h3>agency</h3></li>
+                    <li class="submenu-link"><h3>news</h3></li>
+                    <li class="submenu-link"><h3>team</h3></li>
+                </ul>
+            </li>    
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >gallery</a></li>
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >tours</a></li>
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >blog</a></li>
+            <li class="menu-item"><a class="menu-item" href="#" target="_blank" rel="noopener" >contacts</a></li>
+        </nav>
+        <div class="logo"><H1 class="logo">Journey</H1></div>
+    </header>
+   
+    <section class="slider">
+        <div><img src="images/images5.jpg" alt="boat on the ocean"></div>
+        <div><img src="images/images6.jpg" alt="Venice street with boats"></div>
+        <div><img src="images/images7.jpg" alt="some houses in hats"></div>
+        <div><img src="images/images8.jpg" alt="coliseum on the background of old houses"></div>
+    </section>
+    <article class="header">
+        <h2>Top Destinations</h2>
+        <section class="country-description">
+            <img class="wiew-capital" src="images/images2.jpg" alt="Venice street with boats" >
+            <article class="refinement">
+                <h3 class="country">Venice</h3>
+                <p class="country-description">Lorem ipsum dolor site geril amet, consectetur cing eliti. Suspendisse nulla leo mew dignissim eu velite a rew qw vehicula lacinia arcufasecro. Aenean lacinia ucibusy fase tortor ut feugiat. Rabitur oliti aliquam bibendum olor quis malesuadivamu.</p>
+                <a  class="more-info" href="#" target="_blank" rel="noopener">Details</a>
+            </article>
+        </section>
+        <section class="country-description">
+            <img class="wiew-capital" src="images/images3.jpg" alt="pride of america statue" >
+            <article class="refinement">
+                <h3 class="country">New York</h3>
+                <p class="country-description">Psum dolor sit ametylo gerto consectetur ertori hykill holit adipiscing lity. Donecto rtopil pellentesque osueremo dasi massa eget cotyll kollit asec emmodem auctor geteq tiloli. Aliquam dapibus neclol nami wertoli elittro eget vulpoli no utaterbil congue turpis in suscipit mintyulitiam ac.</p>
+                <a  class="more-info" href="#" target="_blank" rel="noopener">Details</a>
+            </article>
+        </section>
+        <section class="country-description">
+            <img class="wiew-capital" src="images/images4.jpg" alt="Eiffel Tower on the background of the avenue">
+            <article class="refinement">
+                <h3 class="country">Paris</h3>
+                <p class="country-description">Lorem ipsum dolor sityl trew amet, consectipiscinge elitii. Ham nec urnageri dignissim adipiscing jul quam eleifend, mattisel arcu. Curabitur nolol luctusol ipsum sed massa lil baw gerty ultrices non hyw ercursuswer quam itrabitur. Neque risus, cursus a porta eu, elementum id dolor.</p>
+                <a  class="more-info" href="#" target="_blank" rel="noopener">Details</a>
+            </article>
+        </section>
+    </article>
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.slider').slick({
+        autoplay: true,
+        autoplaySpeed: 2000,
+        prevArrow: '<button class="slick-prev"><</button>',
+        nextArrow: '<button class="slick-next">></button>',
+      });
+    });
+  </script>
+</body>
+</html>
