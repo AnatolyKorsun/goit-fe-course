@@ -1,0 +1,35 @@
+@font-face{
+    font-family: Roboto;
+    src: url('../fonts/roboto-mono-latin-500italic.woff'),
+    url('../fonts/roboto-mono-latin-500italic.woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face{
+    font-family: Roboto;
+    src: url('../fonts/roboto-mono-latin-700.woff'),
+    url('../fonts/roboto-mono-latin-700.woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face{
+    font-family: Lato;
+    src: url('../fonts/lato-latin-700italic.woff'),
+    url('../fonts/lato-latin-700italic.woff2');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face{
+    font-family: Lato;
+    src: url('../fonts/lato-latin-900.woff'),
+    url('../fonts/lato-latin-900.woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face{
+    font-family: Lato;
+    src: url('../fonts/lato-latin-regular.woff'),
+    url('../fonts/lato-latin-regular.woff2');
+    font-weight: 500;
+    font-style: normal;
+}
