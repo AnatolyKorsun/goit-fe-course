@@ -1,0 +1,171 @@
+conntainer{
+  min-width: 20rem;
+  max-width: 58.75rem;
+}
+.masthead{
+  display: flex;
+  justify-content: space-between;
+}
+.logo {
+  text-transform: uppercase;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+.find-friend {
+  text-align: center;
+  background-image: url("../images/desktop.jpg");
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  min-height: 33.75rem;
+  max-height: 43.75rem;
+  color: #fff;
+  padding-top: 1.25rem;
+  margin-bottom: 4.375rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.logo {
+  display: inline-block;
+padding-top: 6px;
+  text-transform: uppercase;
+}
+.check-in{
+  display: block;
+}
+.check-in a {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+}
+.sing-up {
+  border: 2px solid #fff;
+  border-radius: 3.125rem;
+}
+.main {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  margin-bottom: 0.75rem;
+  
+}
+.find-partner {
+  display: inline-block;
+  font-size: 0.875rem;
+  width: 17.5rem;
+  padding: 0.9375rem 3.125rem;
+  background-color: rgb(255, 78, 80);
+  border-radius: 3.125rem;
+}
+.find-friend p {
+  width: 40%;
+  min-height: 2rem;
+  min-width: 13.75rem;
+  max-width: 25rem;
+  margin: auto;
+  margin-bottom: 1.0625rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+/* partners */
+.partners {
+  padding-bottom: 1.56rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.choice{
+  margin-bottom: 2.5rem;
+}
+.partner-card {
+  margin: auto;
+  width: 14.375rem;
+  position: relative;
+}
+.partner-image {
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 1.25rem;
+}
+.icon-tube,
+.icon-coffe,
+.icon-plane,
+.icon-tv {
+  position: absolute;
+  border-radius: 50%;
+  border: 0.3125rem solid #fff;
+  height: 2.5rem;
+  width: 2.5rem;
+  right: 3.125rem;
+  top: 5rem;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.icon-tube {
+  background-image: url("../images/test-tube.jpg");
+}
+.icon-tv {
+  background-image: url("../images/tv.jpg");
+}
+.icon-coffe {
+  background-image: url("../images/coffe.jpg");
+}
+.icon-plane {
+  background-image: url("../images/plane.jpg");
+}
+.partners h3 {
+  display: inline-block;
+  width: 68.75%;
+  min-width: 13.75rem;
+  max-width: 25rem;
+  font-size: 1.125rem;
+}
+.choose-partner{
+  margin-bottom: 1.25rem;
+}
+.partner-name {
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+}
+.partner-preferences {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(174, 174, 174);
+}
+.all-partners {
+  display: inline-block;
+  color: rgb(255, 78, 80);
+  font-size: 0.875rem;
+  padding: 0.9375rem 3.125rem;
+  border: 0.125rem solid rgb(255, 78, 80);
+  border-radius: 3.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+@media(max-width:759px){
+  .partners-list-item:not(:last-child){
+    margin-bottom: 1.875rem;
+  }
+  .masthead {
+    flex-direction: column-reverse;
+    min-height: 10.625rem;
+    margin-bottom: 2.5rem;
+  }
+}
+@media(min-width:760px){
+  .masthead {
+    margin-bottom: 10.7rem;
+  }
+}
+@media(min-width:760px) and (max-width:939px){
+  .partners-list-item:nth-child(-n+2){
+    margin-bottom: 3.125rem;
+  }
+}
