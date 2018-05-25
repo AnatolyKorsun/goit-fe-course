@@ -10,13 +10,8 @@ function SocialBook(users = [], posts = {}) {
       .toString(36)
       .substr(2, 9);
 
-  this.getAllUsers = users => {
-    let allUsers = [];
-    users.forEach(user => {
-      allUsers.push(user.id);
-    });
-    return allUsers;
-  };
+ this.getAllUsers = users => this.users;
+    
 
   this.getUserByLogin = login => {
     const userByLogin = this.users.find(user => user.login === login);
@@ -40,10 +35,7 @@ function SocialBook(users = [], posts = {}) {
     this.users = this.users.filter(user => user.id !== userId);
   };
 
-  this.getUsersCount = () => {
-    const count = this.users.reduce((count, user, ind) => (count = ind + 1));
-    return count;
-  };
+  this.getUsersCount = () => this.users.length;
 
   this.getUserPosts = userId => this.posts[userId].map(post => post.text);
 
@@ -65,8 +57,7 @@ function SocialBook(users = [], posts = {}) {
       return post;
     }));
 
-  this.getPostCount = userId =>
-    this.posts[userId].reduce((posts, userPost, ind) => (posts = ind + 1));
+  this.getPostCount = userId => this.posts[userId].length;
 }
 
 const initialPosts = {
@@ -150,4 +141,5 @@ const socialBook = new SocialBook(initialUsers, initialPosts);
 
 // const postCount = socialBook.getPostCount("-qkpzenjxe");
 // console.log('Post count: ',postCount);
-//
+
+
