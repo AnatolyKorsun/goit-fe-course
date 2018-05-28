@@ -1,145 +1,208 @@
 'use strict'
 
-function Guest (name, age){
-    this.name = name;
-    this.age = age;
-};
+function Hamburger(obj){
+this.size = obj.size;
+console.log('size',this.size);
+this.stuffing = obj.stuffing;
+console.log('stuffing',this.stuffing);
 
-const mango = new Guest('Mango', 25);
-const Poly = new Guest('Poly', 25);
+this.TOPPING_SPICE =0;
+this.TOPPING_SAUSE =0;
 
-console.log(mango);
-console.log(Guest);
+// console.log(obj.size);
+// console.log(obj.stuffing);
 
-Guest.prototype.showName = function(){
-    return this.name
-};
-
-console.log('mango.showName:', mango.showName());
-console.log( Poly.showName);
-
-// // console.log('wha');
+// console.log(Hamburger.SIZES);
 
 
-// function Hamburger(ham){
+// this.size = obj.size;
+// this.stuffing = obj.stuffing;
 
-//         Hamburger.SIZE_SMALL = 'SIZE_SMALL';
-//         Hamburger.SIZE_LARGE = 'SIZE_LARGE';
-//         Hamburger.SIZES = {
-//             [Hamburger.SIZE_SMALL]: { price: 30,  calories: 50,},
-//             [Hamburger.SIZE_LARGE]: { price: 50,  calories: 100,},
-//             };
+// console.log(this.size);
+// console.log(this.stuffing);
 
-//          Hamburger.STUFFING_CHEESE = 'STUFFING_CHEESE';
-//          Hamburger.STUFFING_SALAD = 'STUFFING_SALAD';
-//          Hamburger.STUFFING_MEAT = 'STUFFING_MEAT';
-//          Hamburger.STUFFINGS = {
-//             [Hamburger.STUFFING_CHEESE]: { price: 15, calories: 20,},
-//             [Hamburger.STUFFING_SALAD]: { price: 20, calories: 5,},
-//             [Hamburger.STUFFING_MEAT]: { price: 35, calories: 15,},
-//             };
-
-//          Hamburger.TOPPING_SPICE = 'TOPPING_SPICE';
-//          Hamburger.TOPPING_SAUCE = 'TOPPING_SAUSE';
-//          Hamburger.TOPPINGS = {
-//             [Hamburger.TOPPING_SPICE]: {price: 10, calories: 0,},
-//             [Hamburger.TOPPING_SAUSE]: {price: 15, calories: 5,},
-//             };
-
-//         console.log(ham);
-//         this.size = name;
-//         // this.stuffing = stuffing;
-
-//         this.getFullInfo = function(){
-//             console.log(this.size);
-//         };
-
-        
-
-
-
+// for(const key in Hamburger){
+//     if (Hamburger[key] === obj.size ){
+//         console.log(Hamburger[key] , obj.size);
+//     }
 // };
 
-// // const hamb = Object.create(Hamburger);
-// // hamb.pole = 'true'
-// // humb.prototype.construcotr = Hamburger;
-// const hamb = new Hamburger({pole:'10', mango:'15'});
-//     // { size: Hamburger.SIZE_SMALL, stuffing: Hamburger.STUFFING_CHEESE});
-
-// console.log(hamb);
-// // const hamp = object.create(Hamburger);
-// // hamb.__proto__ = Hamburger;
-// console.log(`hamb:${hamb}`);
-
-// console.log(hamb.SIZE_SMALL);
+        // console.log(Hamburger.STUFFINGS[obj.stuffing].calories,
+// Hamburger.SIZES[obj.size].calories);
 
 
-// hamb.getFullInfo();
+// for(const key in Hamburger.SIZES){
+//     if (Hamburger[key] === obj.size ){
+//         console.log(Object.keys(Hamburger.SIZES));
+        console.log('size price:',Hamburger.SIZES[obj.size].price);
+        // console.log(Hamburger.SIZES[obj.size].calories);
+//     }
+// };
+
+// for(const key in Hamburger.STUFFINGS){
+//     if (Hamburger[key] === obj.stuffing ){
+//         console.log(Object.keys(Hamburger.STUFFINGS));
+        console.log('stuffing price:',Hamburger.STUFFINGS[obj.stuffing].price);
+        // console.log(Hamburger.STUFFINGS[obj.stuffing].calories);
+//     }
+// };
+// for(const key in Hamburger.TOPPINGS){
+//         if (Hamburger[key] === topping && this[topping] !== topping){
+//             this[topping] = topping;
+//             console.log(Object.keys(Hamburger.TOPPINGS));
+//             console.log(Hamburger[key] ,topping);
+            
+//             console.log(Hamburger.TOPPINGS[topping].price);
+//             console.log(Hamburger.TOPPINGS[topping].calories);
+//         }
+//     };
+ 
+};
+
+Hamburger.SIZE_SMALL = 'SIZE_SMALL';
+Hamburger.SIZE_LARGE = 'SIZE_LARGE';
+
+Hamburger.SIZES = {
+    [Hamburger.SIZE_SMALL]: {price: 30,calories: 50, },
+    [Hamburger.SIZE_LARGE]: {price: 50,calories: 100, },
+};
+
+Hamburger.STUFFING_CHEESE = 'STUFFING_CHEESE';
+Hamburger.STUFFING_SALAD = 'STUFFING_SALAD';
+Hamburger.STUFFING_MEAT = 'STUFFING_MEAT';
+
+Hamburger.STUFFINGS = {
+  [Hamburger.STUFFING_CHEESE]: {price: 15, calories: 20,},
+  [Hamburger.STUFFING_SALAD]: {price: 20, calories: 5,},
+  [Hamburger.STUFFING_MEAT]: {price: 35, calories: 50,},
+};
+
+Hamburger.TOPPING_SPICE = 'TOPPING_SPICE';
+Hamburger.TOPPING_SAUSE = 'TOPPING_SAUSE';
+
+Hamburger.TOPPINGS = {
+  [Hamburger.TOPPING_SPICE]: {price: 10, calories: 0,},
+  [Hamburger.TOPPING_SAUSE]: {price: 15, calories: 5,},
+};
+
+const hamburger = new Hamburger({ size: Hamburger.SIZE_SMALL,  stuffing: Hamburger.STUFFING_MEAT });
+
+//  * Узнать размер гамбургера
+Hamburger.prototype.getSize = function () {return this.size};
+// console.log('hamburger size:',hamburger.getSize());
+
+//  * Узнать начинку гамбургера
+Hamburger.prototype.getStuffing = function () {return this.stuffing };
+//  console.log('stuffing:', hamburger.getStuffing());
+
+//  * Добавить topping к гамбургеру. Можно добавить несколько topping, при условии, что они разные.
+Hamburger.prototype.addTopping = function (topping) {
+        if (Hamburger[topping] === topping && this[topping] !== topping){
+            this[topping] = topping;
+        }
+    };
+hamburger.addTopping('TOPPING_SPICE');
+hamburger.addTopping('TOPPING_SAUSE');
+console.log('topping:',hamburger.TOPPING_SAUSE);
+console.log('topping:',hamburger.TOPPING_SPICE);
+
+
+// * Убрать topping, при условии, что она ранее была добавлена
+Hamburger.prototype.removeTopping = function (topping) { 
+    if (Hamburger[topping] === topping && this[topping] === topping){
+        this[topping] = 0;
+    };
+ };
+//  hamburger.removeTopping('TOPPING_SPICE');
+//  hamburger.removeTopping('TOPPING_SAUSE');
+//  console.log(hamburger.TOPPING_SPICE);
+//  console.log(hamburger.TOPPING_SAUSE);
+
+//  * Получить список toppings
+Hamburger.prototype.getToppings = function () { 
+    return Hamburger.TOPPINGS
+ };
+//  console.log(hamburger.getToppings());
+
+ //  * Узнать цену гамбургера
+            // console.log(Hamburger.TOPPINGS[].price);
+ 
+Hamburger.prototype.calculatePrice = function () {
+    let totalPriceTopping= 0;
+    for(const key in Hamburger.TOPPINGS){
+                if (Hamburger[key] === this[key]){
+                    //  console.log(key);
+                     totalPriceTopping += Hamburger.TOPPINGS[key].price;
+                };
+                        console.log('topping price',totalPriceTopping);
+                
+
+            //             this[topping] = topping;
+            //             console.log(Object.keys(Hamburger.TOPPINGS));
+                        // console.log(totalPriceTopping);
+            
+            //             console.log(Hamburger.TOPPINGS[topping].price);
+            //             console.log(Hamburger.TOPPINGS[topping].calories);
+            //         }
+                };
+            const totalPrice = Hamburger.SIZES[this.size].price + Hamburger.STUFFINGS[this.stuffing].price + totalPriceTopping;
+    return totalPrice
+ };
+
+//  console.log(Hamburger.SIZES[this.size].price);
+//  console.log(Hamburger.STUFFINGS[this.stuffing].price);
+ 
+ console.log('total price;',hamburger.calculatePrice());
+
+//  * Узнать калорийность
+Hamburger.prototype.calculateCalories = function () { 
+    let totalCaloriesTopping= 0;
+    for(const key in Hamburger.TOPPINGS){
+                if (Hamburger[key] === this[key]){
+                    totalCaloriesTopping += Hamburger.TOPPINGS[key].calories;
+                };
+                        console.log('topping calories',totalCaloriesTopping);
+                
+
+                };
+            const totalCalories = Hamburger.SIZES[this.size].calories + Hamburger.STUFFINGS[this.stuffing].calories + totalCaloriesTopping;
+    return totalCalories
+ };
+
+ 
+ console.log('total calories',hamburger.calculateCalories());
+ 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/* 
+  Напишите скрипт, расчитывающий стоимость и калорийность гамбургера. 
 
   
-//   База гамбургера может быть большой или маленькой (обязательно):
-// 	- маленькая (+30 денег, +50 калорий) константа
-// 	- большая (+50 денег, +100 калорий) константа
+  База гамбургера может быть большой или маленькой (обязательно):
+	- маленькая (+30 денег, +50 калорий)
+	- большая (+50 денег, +100 калорий)
 	
-//   Гамбургер может быть с одной из нескольких видов начинок (обязательно):
-// 	- сыром (+15 денег, +20 калорий) константа
-// 	- салатом (+20 денег, +5 калорий) константа
-// 	- мясом (+35 денег, +15 калорий) константа
+  Гамбургер может быть с одной из нескольких видов начинок (обязательно):
+	- сыром (+15 денег, +20 калорий)
+	- салатом (+20 денег, +5 калорий)
+	- мясом (+35 денег, +15 калорий)
 	
-//   Дополнительно, гамбургер можно: 
-// 	- посыпать приправой (+10 денег, +0 калорий) 
-// 	- полить соусом (+15 денег, +5 калорий)
-
-
-//   Типы начинок и размеры надо сделать константами. Никаких магических строк 
-//   и чисел быть не должно.
-
-//   Напишите скрипт, расчитывающий стоимость и калорийность гамбургера. 
-//   Используте ООП подход, создайте класс Hamburger, константы, методы 
-//   для выбора опций и рассчета нужных величин. 
-
-//   Класс Hamburger, получает на вход информацию о гамбургере, а на выходе 
-//   дает информацию о каллориях и цене. 
- 
-// */
-// /**
-// * Класс, объекты которого описывают параметры гамбургера. 
-// * 
-// * @constructor
-// * @param {String} size - Размер
-// * @param {String} stuffing - Начинка
-// * @throws {HamburgerException} - При неправильном использовании (только в доп. задании)
-// */
-// function Hamburger({ size, stuffing }) { ... } 
-// /* Размеры, виды начинок и добавок добавить как статические свойства класса. К примеру: */
-// Hamburger.SIZE_SMALL = 'SIZE_SMALL';
-// Hamburger.SIZE_LARGE = ...
-// Hamburger.SIZES = {
-//   [Hamburger.SIZE_SMALL]: {
-//     price: 30,
-//     calories: 50,
-//   },
-// };
-// Hamburger.STUFFING_CHEESE = 'STUFFING_CHEESE';
-// Hamburger.STUFFING_SALAD = ...
-// Hamburger.STUFFING_MEAT = ...
-// Hamburger.STUFFINGS = {
-//   [Hamburger.STUFFING_CHEESE]: {
-//     price: 15,
-//     calories: 20,
-//   },
-// };
-// Hamburger.TOPPING_SPICE = 'TOPPING_SPICE';
-// Hamburger.TOPPING_SAUCE = ...
-// Hamburger.TOPPINGS = {
-//   [Hamburger.TOPPING_SPICE]: {
-//     price: 10,
-//     calories: 0,
-//   },
-// };
+  Дополнительно, гамбургер можно: 
+	- посыпать приправой (+10 денег, +0 калорий) 
+    - полить соусом (+15 денег, +5 калорий)
+    
 
 
 
@@ -148,164 +211,45 @@ console.log( Poly.showName);
 
 
 
-// /**
-// * Добавить topping к гамбургеру. Можно добавить несколько
-// * topping, при условии, что они разные.
-// * 
-// * @param {String} topping - Тип добавки
-// * @throws {HamburgerException} - При неправильном использовании (только в доп. задании)
-// */
-// Hamburger.prototype.addTopping = function (topping) { ... }
 
 
-// /**
-//  * Убрать topping, при условии, что она ранее была 
-//  * добавлена.
-//  * 
-//  * @param {String} topping - Тип добавки
-//  * @throws {HamburgerException} - При неправильном использовании (только в доп. задании)
-//  */
-// Hamburger.prototype.removeTopping = function (topping) { ... }
 
 
-// /**
-//  * Получить список toppings
-//  *
-//  * @return {Array} - Массив добавленных topping, содержит значения констант
-//  *                   Hamburger.TOPPING_*
-//  */
-// Hamburger.prototype.getToppings = function () { ... }
 
 
-// /**
-//  * Узнать размер гамбургера
-//  *
-//  * @return {String} - размер гамбургера
-//  */
-// Hamburger.prototype.getSize = function () { ... }
 
-
-// /**
-//  * Узнать начинку гамбургера
-//  *
-//  * @return {String} - начинка гамбургера
-//  */
-// Hamburger.prototype.getStuffing = function () { ... }
-
-
-// /**
-//  * Узнать цену гамбургера
-//  * @return {Number} - Цена в деньгах
-//  */
-// Hamburger.prototype.calculatePrice = function () { ... }
-
-
-// /**
-//  * Узнать калорийность
-//  *
-//  * @return {Number} - Калорийность в калориях
-//  */
-// Hamburger.prototype.calculateCalories = function () { ... }
-
-
-// const hamburger = new Hamburger({ 
-//   size: Hamburger.SIZE_SMALL, 
-//   stuffing: Hamburger.STUFFING_CHEESE
-// });
 
 
 // // Добавка из приправы
 // hamburger.addTopping(Hamburger.TOPPING_SPICE);
 
-
 // // Спросим сколько там калорий
 // console.log("Calories: ", hamburger.calculateCalories());
-
 
 // // Сколько стоит?
 // console.log("Price: ", hamburger.calculatePrice());
 
-
 // // Я тут передумал и решил добавить еще соус
 // hamburger.addTopping(Hamburger.TOPPING_SAUCE);
-
 
 // // А сколько теперь стоит? 
 // console.log("Price with sauce: ", hamburger.calculatePrice());
 
-
 // // Проверить, большой ли гамбургер? 
 // console.log("Is hamburger large: ", hamburger.getSize() === Hamburger.SIZE_LARGE); // -> false
 
-
 // // Убрать добавку
 // hamburger.removeTopping(Hamburger.TOPPING_SPICE);
-
-
+						     
 // // Смотрим сколько добавок
 // console.log("Hamburger has %d toppings", hamburger.getToppings().length); // 1
-// 
 
-
-
-
-
-/*
-//   Обратите внимание в коде выше на такие моменты:
-//     - класс не взаимодействует с внешним миром. Это не его дело, этим занимается другой код, 
-//     	а класс живет в изоляции от мира
-//     - обязательные параметры (размер и начинка) мы передаем через конструктор, 
-//     	чтобы нельзя было создать объект, не указав их
-//     - необязательные (добавка) добавляем через методы
+	
+    
 //     - имена методов начинаются с глагола и имеют вид «сделайЧтоТо»: calculateCalories(), addTopping()
-//     - типы начинок обозначены "константами" с понятными именами (на самом деле просто свойствами, 
-//       	написанным заглавными буквами, которые мы договорились считать "константами")
-//     - объект создается через конструктор - функцию, которая задает начальные значения полей. 
-//       	Имя конструктора пишется с большой буквы и обычно является существительным: new Hamburger(...)
+    
+
 //     - в свойствах объекта гамбургера логично хранить исходные данные (размер, тип начинки), 
 //       	а не вычисленные из них (цена, число калорий и т.д.). Рассчитывать цену и калории 
 // 	логично в тот момент, когда это потребуется, а не заранее.
-//   При решении задачи в ООП стиле, необходимо ответить на вопросы:	
-//     - какие есть сущности, для которых мы сделаем классы? (Гамбургер).
-//     - какие у них есть свойства (размер, начинка, добавки). Цена или калории не являются свойствами так 
-//       как они вычисляются из других свойств и хранить их не надо.
-//     - что мы хотим от них получить (какие у них должны быть методы). Например, сколько стоит гамбургер?
-//     - как сущности связаны? У нас одна сущность «Гамбургер» и она ни с чем не связана.
 // */
-
-
-
-
-
-
-
-// /*
-//   ***ДОПОЛНИТЕЛЬНОЕ ЗАДАНИЕ - выполнять по желанию***
-//   Код должен быть защищен от ошибок. Представьте, что классом будет 
-//   пользоваться другой программист. Если он передает неправильный тип 
-//   гамбургера, например, или неправильный вид добавки, должно выбрасываться 
-//   исключение (ошибка не должна молча игнорироваться).
-//   При неправильном использовании класс сообщает об этом с помощью выброса исключения.
-// */
-// /**
-//  * Представляет информацию об ошибке в ходе работы с гамбургером. 
-//  * Подробности хранятся в свойстве message.
-//  * @constructor 
-//  */
-// function HamburgerException (...) { ... }
-// // не передали обязательные параметры
-// const h2 = new Hamburger(); // => HamburgerException: no size given
-// // передаем некорректные значения, добавку вместо размера
-// const h3 = new Hamburger({
-//   size: Hamburger.TOPPING_SPICE, 
-//   stuffing: Hamburger.TOPPING_SPICE
-// }); 
-// // => HamburgerException: invalid size 'TOPPING_SPICE'
-// // добавляем много добавок
-// const h4 = new Hamburger({
-//   size: Hamburger.SIZE_SMALL, 
-//   stuffing: Hamburger.STUFFING_CHEESE
-// });
-// hamburger.addTopping(Hamburger.TOPPING_SAUCE);
-// hamburger.addTopping(Hamburger.TOPPING_SAUCE); 
-// // => HamburgerException: duplicate topping 'SAUCE'
