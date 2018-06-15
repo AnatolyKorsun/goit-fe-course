@@ -1,7 +1,6 @@
 "use strict";
 const posts = [
-  {
-    img: "https://placeimg.com/400/150/arch",
+  { img: "https://placeimg.com/400/150/arch",
     title: "Post title 1",
     text:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!",
@@ -65,19 +64,12 @@ function createPostCard(obj) {
 </div>;`;
 };
 
-function createPosts(posts) {
-  const result = posts.reduce((acc, obj) => acc + createPostCard(obj), "");
-  const res = document.querySelector(".post");
-  res.innerHTML += result;
-};
-
-
 function createCards(posts) {
-  createPosts(posts);
-  const arr =document.querySelectorAll('.actions');
-    const string = `<ul>${[arr].reduce((acc, x) => acc + `<li>${x}</li>`, '')}</ul>`;
-  console.log(string);
-
+  const result = posts.reduce((acc, obj) => acc + createPostCard(obj), "");
+  return result;
 };
 
-createPosts(posts);
+const post = document.querySelector(".post");
+post.innerHTML = createCards(posts);
+console.log(createCards(posts));
+
