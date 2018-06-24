@@ -1,0 +1,11 @@
+ul,li{
+    list-style: none;
+}
+
+.preview{
+padding: 5px;
+border: solid 2ps #808080; 
+display: flex;
+flex-wrap: wrap;
+
+}
