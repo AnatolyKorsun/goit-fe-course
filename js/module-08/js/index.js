@@ -1,27 +1,74 @@
-'use strict'
-console.log('started');
+"use strict";
 
-function gallery(){
+const galleryItems = [
+  {
+    preview: "img/preview-1.jpeg",
+    fullview: "img/fullview-1.jpeg",
+    alt: "alt text 1"
+  },
+  {
+    preview: "img/preview-2.jpeg",
+    fullview: "img/fullview-2.jpeg",
+    alt: "alt text 2"
+  },
+  {
+    preview: "img/preview-3.jpeg",
+    fullview: "img/fullview-3.jpeg",
+    alt: "alt text 3"
+  },
+  {
+    preview: "img/preview-4.jpeg",
+    fullview: "img/fullview-4.jpeg",
+    alt: "alt text 4"
+  },
+  {
+    preview: "img/preview-5.jpeg",
+    fullview: "img/fullview-5.jpeg",
+    alt: "alt text 5"
+  },
+  {
+    preview: "img/preview-6.jpeg",
+    fullview: "img/fullview-6.jpeg",
+    alt: "alt text 6"
+  },
+  {
+    preview: "img/preview-7.jpeg",
+    fullview: "img/fullview-7.jpeg",
+    alt: "alt text 7"
+  },
+  {
+    preview: "img/preview-8.jpeg",
+    fullview: "img/fullview-8.jpeg",
+    alt: "alt text 8"
+  }
+];
+
+const dataFullview =galleryItems[0].fullview
+function create(dataFullview){
+
+  function createFullviewImage(dataFullview) {
     return `
-    <div class="fullview">
-    <img src="img/fullview-image-1.jpeg" alt="alt text 1">
-    </div>;
+      <div class="fullview">
+      <img src="${dataFullview}" alt="alt text 1">
+      </div>;`;
+  };
+  function createCard(galleryItems) {
+    return `<li><img src=${galleryItems.preview} data-fullview=${
+      galleryItems.fullview
+    } alt=${galleryItems.alt}"></li>`;
+  };
+  function createGallery(galleryItems) {
+    const result =
+      `<ul class="preview js-preview">` +
+      galleryItems.reduce((acc, obj) => acc + createCard(obj), "") +
+      `</ul>;`;
+    return result;
+  };
 
-    <ul class="preview">
-    <li><img src="img/preview-1.jpeg" data-fullview="img/fullview-1.jpeg" alt="alt text 1"></li>
-    <li><img src="img/preview-2.jpeg" data-fullview="img/fullview-2.jpeg" alt="alt text 2"></li>
-    <li><img src="img/preview-3.jpeg" data-fullview="img/fullview-3.jpeg" alt="alt text 3"></li>
-    <li><img src="img/preview-4.jpeg" data-fullview="img/fullview-4.jpeg" alt="alt text 4"></li>
-    <li><img src="img/preview-5.jpeg" data-fullview="img/fullview-5.jpeg" alt="alt text 5"></li>
-    <li><img src="img/preview-6.jpeg" data-fullview="img/fullview-6.jpeg" alt="alt text 6"></li>
-    <li><img src="img/preview-7.jpeg" data-fullview="img/fullview-7.jpeg" alt="alt text 7"></li>
-    <li><img src="img/preview-8.jpeg" data-fullview="img/fullview-8.jpeg" alt="alt text 8"></li>
-  </ul>`
+  const list = document.querySelector(".js-image-gallery");
+  list.innerHTML = createFullviewImage(dataFullview) + createGallery(galleryItems);
 };
 
-const list = document.querySelector('.js-image-gallery')
-console.log(list);
-list.innerHTML = gallery();
 
 
 
@@ -31,7 +78,31 @@ list.innerHTML = gallery();
 
 
 
+create(dataFullview);
+const gallery = document.querySelector(".js-preview");
+gallery.addEventListener("click", onGalleryClick);
+// event => {console.log(event.target)
+// })
 
+function onGalleryClick(event) {
+  const target = event.target;
+const nodeName = target.nodeName;
+console.log(dataFullview);
+console.log(nodeName);
+
+if(nodeName !== 'IMG') 
+return target.getAttribute('data-fullview');
+
+
+  console.log(target.getAttribute('data-fullview'));
+
+}
+
+// function changeFullViewImage(){
+//   const dataFullview = onGalleryClick();
+//   createFullviewImage(dataFullview);
+
+// }
 /*
   Создайте компонент галлереи изображений следующего вида.
   
@@ -57,10 +128,10 @@ list.innerHTML = gallery();
       
   +    - image-gallery есть изначально в HTML-разметке как контейнер для компонента.                 
     
-      - fullview содержит в себе увеличенную версию выбранного изображения из preview, и
+  +    - fullview содержит в себе увеличенную версию выбранного изображения из preview, и
         создается динамически при загрузке страницы.
     
-      - preview это список маленьких изображений, обратите внимание на атрибут data-fullview,
+  +    - preview это список маленьких изображений, обратите внимание на атрибут data-fullview,
         он содержит ссылку на большое изображение. preview и его элементы, также создаются 
         динамически, при загрузке страницы.
         
@@ -82,18 +153,3 @@ list.innerHTML = gallery();
       размер. Пусть маленькие изображения для preview будут 320px по ширине, большие для fullview 1280px.
       Подберите изображения одинаковых пропорций.
 */
-
-/*
-  Массив объектов с данными для создания компонента выглядит следующим образом.
-  Замените пути на соотвествующие вашим, или назовите изображения аналогично.
-*/
-
-// const galleryItems = [
-//     { preview: 'img/preview-1.jpeg', fullview: 'img/fullview-1.jpeg', alt: "alt text 1" },
-//     { preview: 'img/preview-2.jpeg', fullview: 'img/fullview-2.jpeg', alt: "alt text 2" },
-//     { preview: 'img/preview-3.jpeg', fullview: 'img/fullview-3.jpeg', alt: "alt text 3" },
-//     { preview: 'img/preview-4.jpeg', fullview: 'img/fullview-4.jpeg', alt: "alt text 4" },
-//     { preview: 'img/preview-5.jpeg', fullview: 'img/fullview-5.jpeg', alt: "alt text 5" },
-//     { preview: 'img/preview-6.jpeg', fullview: 'img/fullview-6.jpeg', alt: "alt text 6" },
-//   ];
-

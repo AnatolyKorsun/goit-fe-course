@@ -1,11 +1,29 @@
-ul,li{
-    list-style: none;
+ul,
+li {
+  list-style: none;
 }
 
-.preview{
-padding: 5px;
-border: solid 2ps #808080; 
-display: flex;
-flex-wrap: wrap;
+body {
+  /* background-color: #f0f; */
+  margin: auto;
+}
 
+.fullview {
+    width: 100vw;
+  display: block;
+  padding: 10px;
+  /* height: auto; */
+  margin: auto;
+  background-color: grey;
+}
+
+.preview {
+  display: flex;
+  flex: 0 0 13%;
+  flex-wrap: wrap;
+  border: solid 2ps #808080;
+}
+img{
+    padding: 2px;
+    border: solid 1px red;
 }
