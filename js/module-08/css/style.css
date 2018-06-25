@@ -4,26 +4,20 @@ li {
 }
 
 body {
-  /* background-color: #f0f; */
+  width:1350px; 
   margin: auto;
 }
 
-.fullview {
-    width: 100vw;
-  display: block;
-  padding: 10px;
-  /* height: auto; */
-  margin: auto;
-  background-color: grey;
+fullview img{
+width: 100%;
+height: auto;
 }
 
 .preview {
   display: flex;
-  flex: 0 0 13%;
   flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 1 1 2%;
   border: solid 2ps #808080;
 }
-img{
-    padding: 2px;
-    border: solid 1px red;
-}
+
