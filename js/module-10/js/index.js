@@ -1,46 +1,122 @@
 'use strict'
 
-const allUsers = document.querySelector('.js-allUsers')
+const allUsers = document.querySelector('.js-allUsers');
+const usersList = document.querySelector('.js-item');
+const userByIdBtn = document.querySelector('.js-userById');
+const input = document.querySelector('.js-input');
+const userIdList = document.querySelector('.js-showUserById');
+const name = document.querySelector('.js-name');
+const age = document.querySelector('.js-age');
+const addUserBtn = document.querySelector('.js-addUser');
+const removeBtn = document.querySelector('.js-removeById')
+const removeinput = document.querySelector('.js-removeinput')
 
-const getAllUsers = () =>{
-    console.log('wha');
+let currencies = {};
+
+const createUsersList = () => {
+    currencies.forEach(user => {
+        const item = document.createElement("li");
+        item.textContent = `id: ${user.id}   name:${user.name}    age: ${user.age}`;
+        item.classList.add("js-item");
+        usersList.appendChild(item);
+    });
+};
+
+const getAllUsers = () => {
     fetch('https://test-users-api.herokuapp.com/users/')
-    .then(response => response.json())
-    .then(data => console.log(data));
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error("Error fetching data");
+        })
+        .then(data => {
+            currencies = data.data;
+            console.log(currencies)
+            createUsersList();
+        })
+        .catch(err => {
+            console.error("Error: ", err);
+        });
+};
 
-    // const createGridItems = items => {
-        //   return items.reduce(
-        //     (markup, item) =>
-        //       markup +
-        //       `<div class="grid-item">
-        //         <img src=${item.webformatURL} alt="photo">
-        //       </div>`,
-        //     '',
-        //   );
-}
+const getUserById = (id) => {
+    fetch(`https://test-users-api.herokuapp.com/users/${id}`)
+        .then(response => {
+            if (response.ok) return response.json();
+            throw new Error("Error fetching data");
+        })
+        .then(data => {
+            const item = document.createElement("p");
+            item.textContent = `id: ${data.data.id}   name:${data.data.name}    age: ${data.data.age}`;
+            userIdList.appendChild(item);
+        })
+        .catch(err => {
+            console.error("Error: ", err);
+        });
+};
+const getById = () => {
+    if (input.value) {
+        getUserById(input.value)
+    };
+};
 
 
-allUsers.addEventListener('click', getAllUsers);
+const addUser = (newName, newAge) => {
+    const newPost = {
+        name: newName,
+        age: newAge,
+    };
+    fetch('https://test-users-api.herokuapp.com/user/', {
+        method: 'POST',
+        body: JSON.stringify(newPost),
+        headers: {
+            "Content-type": "aplication/json; charset=UTF-8"
+        }
+    })
+        .then(response => {
+            if (response.ok) return response.json()
+        })
+        .then(data => console.log(data))
+    // console.log(age, name)
+};
+const createUser = () => {
+    if (age.value & name.value) {
+        addUser(name.value, age.value)
+        // console.log(age.value)
+        // console.log(name.value)
+
+        // addUser(name.value, age.value)
+    }
+};
+
+const removeUser = (id) => {
+    fetch('https://test-users-api.herokuapp.com/users/:id' , {
+        method: 'DELETE'
+    })
+        .then(() => alert("success"))
+            .catch(error => console.log('Erroe:', error)
+            )}
+const removeId = () => {
+    if (removeinput.value) {
+        removeUser(removeinput.value)
+    };
+};
 
 
 
+allUsers.addEventListener("click", getAllUsers);
+userByIdBtn.addEventListener("click", getById);
+addUserBtn.addEventListener("click", createUser);
+removeBtn.addEventListener("click", removeId);
 
 
 
 //     user это объект с новыми полями name и age.
 //   Документацию по бэкенду и пример использования прочитайте 
-//   в документации https://github.com/trostinsky/users-api#users-api.
-//   Сделать минимальный графический интерфейс в виде панели с полями и кнопками. 
-//   А так же панелью для вывода результатов операций с бэкендом.
-
 
 // Написать функции которые
 
-// 1 получат всех пользователей
-//  - функция getAllUsers() - должна вернуть текущий список всех пользователей в БД.
 
-// 2 получит пользователя по 1д
-// - функция getUserById(id) - должна вернуть пользователя с переданным id.
+
 
 // 3 Имя + Возвраст и создаст -  ПОСТ
 // - функция addUser(name, age) - должна записывать в БД юзера с полями name и age.
@@ -51,109 +127,3 @@ allUsers.addEventListener('click', getAllUsers);
 // 5 Обновить
 // - функция updateUser(id, user) - должна обновлять данные пользователя по id. 
 
-
-
-
-
-
-// const grid = document.querySelector('.grid');
-// const form = document.querySelector('.form');
-// const input = document.querySelector('.input');
-// const spinner = document.querySelector('.spinner-overlay');
-// const loadMoreBtn = document.querySelector('.load-more');
-// let currentPage = 1;
-// let currentQuery = '';
-
-// const API_KEY = '5837779-ac3ba737206b541ae294f1119';
-
-// const toggleSpinner = () => spinner.classList.toggle('visible');
-
-// const showLoadMoreBtn = () => {
-//   if (!loadMoreBtn.classList.contains('visible')) {
-//     loadMoreBtn.classList.add('visible');
-//   }
-// };
-
-// const resetCurrentPage = () => {
-//   currentPage = 1;
-// };
-
-// const incrementCurrentPage = () => {
-//   currentPage += 1;
-// };
-
-// const scrollToBottom = () => scrollTo(0, document.body.scrollHeight);
-
-// const fetchImages = ({ query, count, page }) => {
-//   const url = `https://pixabay.com/api/?image_type=photo&q=${query}&per_page=${count}&page=${page}&key=${API_KEY}`;
-
-//   return fetch(url)
-//     .then(response => {
-//       if (response.ok) return response.json();
-
-//       throw new Error('error: ' + response.statusText);
-//     })
-//     .then(data => data.hits)
-//     .catch(err => console.log(err));
-// };
-
-// const createGridItems = items => {
-//   return items.reduce(
-//     (markup, item) =>
-//       markup +
-//       `<div class="grid-item">
-//         <img src=${item.webformatURL} alt="photo">
-//       </div>`,
-//     '',
-//   );
-// };
-
-// const updatePhotosGrid = markup => {
-//   grid.insertAdjacentHTML('beforeend', markup);
-// };
-
-// const resetPhotosGrid = () => {
-//   grid.innerHTML = '';
-// };
-
-// const handleFetch = params => {
-//   toggleSpinner();
-
-//   fetchImages(params).then(photos => {
-//     const markup = createGridItems(photos);
-//     updatePhotosGrid(markup);
-//     toggleSpinner();
-//     scrollToBottom();
-//   });
-// };
-
-// const handleFormSumit = e => {
-//   e.preventDefault();
-
-//   resetCurrentPage();
-//   resetPhotosGrid();
-
-//   currentQuery = input.value;
-
-//   handleFetch({
-//     query: currentQuery,
-//     count: 9,
-//     page: currentPage,
-//   });
-
-//   e.target.reset();
-//   showLoadMoreBtn();
-// };
-
-// const hanelLoadMoreClick = () => {
-//   incrementCurrentPage();
-
-//   handleFetch({
-//     query: currentQuery,
-//     count: 9,
-//     page: currentPage,
-//   });
-// };
-
-// form.addEventListener('submit', handleFormSumit);
-// loadMoreBtn.addEventListener('click', hanelLoadMoreClick);
