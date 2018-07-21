@@ -1,0 +1,21 @@
+.form{
+    margin: auto;
+    display: inline-block;
+    border: 2px solid #878782;
+    padding: 10px;
+    text-align: center;
+}
+
+.root{
+    margin: auto;
+    display: inline-block;
+    flex: wrap;
+    border: 2px solid #878782;
+    padding: 10px;
+    text-align: center;
+}
+
+#cart-id{
+    display: flex;   
+    flex: 0 0 30%;
+}
