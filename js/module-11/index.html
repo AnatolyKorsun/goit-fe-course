@@ -12,45 +12,45 @@
         <section>
           <h2>Screen size</h2>
           <ul>
-            <li><label><input class="js" type="checkbox" name="size" value="13"> 13"</label></li>
-            <li><label><input class="js" type="checkbox" name="size" value="15"> 15"</label></li>
-            <li><label><input class="js" type="checkbox" name="size" value="17"> 17"</label></li>
+            <li><label><input class="js-size" type="checkbox" name="size" value="13"> 13"</label></li>
+            <li><label><input class="js-size" type="checkbox" name="size" value="15"> 15"</label></li>
+            <li><label><input class="js-size" type="checkbox" name="size" value="17"> 17"</label></li>
           </ul>
         </section>
         <section>
           <h2>Color</h2>
           <ul>
-            <li><label><input class="jsr" type="checkbox" name="color" value="white"> white</label></li>
-            <li><label><input class="js" type="checkbox" name="color" value="gray"> gray</label></li>
-            <li><label><input class="js" type="checkbox" name="color" value="black"> black</label></li>
+            <li><label><input class="js-color" type="checkbox" name="color" value="white"> white</label></li>
+            <li><label><input class="js-color" type="checkbox" name="color" value="gray"> gray</label></li>
+            <li><label><input class="js-color" type="checkbox" name="color" value="black"> black</label></li>
           </ul>
         </section>
         <section>
           <h2>Release date</h2>
           <ul>
-            <li><label><input class="js" type="checkbox" name="release_date" value="2015"> 2015</label></li>
-            <li><label><input class="js" type="checkbox" name="release_date" value="2016"> 2016</label></li>
-            <li><label><input class="js" type="checkbox" name="release_date" value="2017"> 2017</label></li>
+            <li><label><input class="js-date" type="checkbox" name="release_date" value="2015"> 2015</label></li>
+            <li><label><input class="js-date" type="checkbox" name="release_date" value="2016"> 2016</label></li>
+            <li><label><input class="js-date" type="checkbox" name="release_date" value="2017"> 2017</label></li>
           </ul>
         </section>
-        <button type="submit" class="js-filter">Filter</button>
-        <button type="reset">Clear</button>
+        <button class="js-filter">Filter</button>
+        <button class="js-clear" type="reset">Clear</button>
       </form>
-
-      <div class="root"></div>
+      
+      <div class="root"></div> 
 
         <template id="cart-id">
-            <div class="leptops-cart">
-                {{#each this}}
+          {{#each this}}
+            <div class="laptops-cart">
             <img src="{{img}}" alt="image" width="200">  
             <h3> Name: {{ name }} </h3>
             <h3>Price: {{price}}</h3>
             <h3>Release date: {{release_date}}</h3>
             <h3> Color: {{color}}</h3>
             <p>Info: {{descr}}</p>
-            {{/each}}
-            </div>  
-        </template>  
+          </div>  
+          {{/each}}
+        </template>   
 
         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>

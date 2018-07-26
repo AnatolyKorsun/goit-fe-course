@@ -1,21 +1,24 @@
-.form{
+ .form{
     margin: auto;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid #878782;
     padding: 10px;
     text-align: center;
-}
+} 
 
 .root{
     margin: auto;
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     flex: wrap;
-    border: 2px solid #878782;
     padding: 10px;
     text-align: center;
 }
 
-#cart-id{
-    display: flex;   
+.laptops-cart{
     flex: 0 0 30%;
+    display: inline-block;
+    border: 2px solid #878782;
 }

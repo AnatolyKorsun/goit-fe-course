@@ -1,16 +1,5 @@
 "use strict";
 
-// const laptops = {
-//           size: 13,
-//           color: 'white',
-//           price: 28000,
-//           release_date: 2015,
-//           name: 'Macbook Air White 13"',
-//           img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-//           descr:
-//             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-//         };
-
 const laptops = [
   {
     size: 13,
@@ -22,36 +11,36 @@ const laptops = [
     descr:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
   },
-  {
-    size: 13,
-    color: "gray",
-    price: 32000,
-    release_date: 2016,
-    name: 'Macbook Air Gray 13"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
-  {
-    size: 13,
-    color: "black",
-    price: 35000,
-    release_date: 2017,
-    name: 'Macbook Air Black 13"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
-  {
-    size: 15,
-    color: "white",
-    price: 45000,
-    release_date: 2015,
-    name: 'Macbook Air White 15"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
+  // {
+  //   size: 13,
+  //   color: "gray",
+  //   price: 32000,
+  //   release_date: 2016,
+  //   name: 'Macbook Air Gray 13"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
+  // {
+  //   size: 13,
+  //   color: "black",
+  //   price: 35000,
+  //   release_date: 2017,
+  //   name: 'Macbook Air Black 13"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
+  // {
+  //   size: 15,
+  //   color: "white",
+  //   price: 45000,
+  //   release_date: 2015,
+  //   name: 'Macbook Air White 15"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
   {
     size: 15,
     color: "gray",
@@ -62,36 +51,36 @@ const laptops = [
     descr:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
   },
-  {
-    size: 15,
-    color: "black",
-    price: 45000,
-    release_date: 2017,
-    name: 'Macbook Pro Black 15"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
-  {
-    size: 17,
-    color: "white",
-    price: 65000,
-    release_date: 2015,
-    name: 'Macbook Air White 17"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
-  {
-    size: 17,
-    color: "gray",
-    price: 75000,
-    release_date: 2016,
-    name: 'Macbook Pro Gray 17"',
-    img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
-    descr:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
-  },
+  // {
+  //   size: 15,
+  //   color: "black",
+  //   price: 45000,
+  //   release_date: 2017,
+  //   name: 'Macbook Pro Black 15"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
+  // {
+  //   size: 17,
+  //   color: "white",
+  //   price: 65000,
+  //   release_date: 2015,
+  //   name: 'Macbook Air White 17"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
+  // {
+  //   size: 17,
+  //   color: "gray",
+  //   price: 75000,
+  //   release_date: 2016,
+  //   name: 'Macbook Pro Gray 17"',
+  //   img: "http://demo.posthemes.com/pos_zadademo/images/placeholder.png",
+  //   descr:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae."
+  // },
   {
     size: 17,
     color: "black",
@@ -105,61 +94,88 @@ const laptops = [
 ];
 
 const filterBtn = document.querySelector(".js-filter");
-const checkbox = document.querySelectorAll(".js");
-// const checkboxSize = document.querySelectorAll(".js-size");
-// const checkboxDate = document.querySelectorAll(".js-date");
-// console.log(checkboxColor);
-// console.log(checkboxSize);
-// console.log(checkboxDate);
+const clearBtn = document.querySelector('.js-clear');
+const color = document.querySelectorAll(".js-color");
+const size = document.querySelectorAll(".js-size");
+const date = document.querySelectorAll(".js-date");
+const root = document.querySelector(".root");
+const laptopsCard = root.querySelectorAll('.laptops-cart')
 
-// подивись  по кожному фыльтру чи чекбокс вибраний
-//  якщо вибраний запиши в обэкт фыльтр
-// якщо в фыльтрі є значення запиши обєкт в відфільтрований
+let laptopsFiltred = [];
+const filter = { size: [], color: [], release_date: [] };
+
+// const removeLaptops = () =>{
+
+//   laptopsCard.remove();
+// }
+
+
+const filterLaptops = () => {
+  laptopsFiltred.splice(0);
+  // removeLaptops();
+  // location.reload()
+  laptops.forEach(value => {
+    if ( filter.color.includes(value.color) ||
+      filter.size.includes(String(value.size)) ||
+      filter.release_date.includes(String(value.release_date))) {
+      laptopsFiltred.push(value);
+    };
+    // laptopsCard.remove();
+    build();
+  });
+event.preventDefault();
+console.log('laptopsFiltred:', laptopsFiltred);
+};
 
 
 
-const filter = { size: [], color: ['black'], release_date: [] };
-console.log(filter);
 
 
- const choiceParameters = () => {
+const takeRequest = () => {
+  // location.reload()
 
-checkbox.forEach(value){
-    
+  filter.color.splice(0);
+  filter.size.splice(0);
+  filter.release_date.splice(0);
+
+  color.forEach(value => {
+    if (value.checked === true) filter.color.push(value.defaultValue);
+  });
+  size.forEach(value => {
+    if (value.checked === true) filter.size.push(value.defaultValue);
+  });
+  date.forEach(value => {
+    if (value.checked === true) filter.release_date.push(value.defaultValue);
+  });
+  console.log('filter',filter);
+  
+  filterLaptops();
+  // root.removeChild()
+  
+};
+
+const clear = () =>{
+  console.log ('laptopsCard', laptopsCard);
+  // laptopsCard.remove();
+  location.reload();
 }
 
 
-
-
-    // checkboxColor.reduce((acc, color) => {
-    // if (color.checked) {
-        // filter.color.push(color.value);
-        // console.log(filter);
-    // }
-//   });
-
-
-
+const build = () =>{
+  // laptopsCard.remove();
+  const source = document.querySelector("#cart-id").innerHTML.trim();
+  const template = Handlebars.compile(source);
+  const markup = template(laptopsFiltred);
+  // const markup = template(laptops);
+  
+  // if(root.classList.contains('.laptops-cart')){
+  // };
+  console.log(root);
+  console.log(root.children);
+    // .classList.contains('.laptops-cart')
+  
+  root.insertAdjacentHTML("afterbegin", markup);
 };
-
-const laptopsFiltred = [];
-const build = laptops.forEach(value => {
-  if (
-    filter.size.includes(value.size) ||
-    filter.color.includes(value.color) ||
-    filter.release_date.includes(value.release_date)
-  ) {
-    laptopsFiltred.push(value);
-  }
-});
-
-const root = document.querySelector(".root");
-const source = document.querySelector("#cart-id").innerHTML.trim();
-const template = Handlebars.compile(source);
-const markup = template(filter);
-root.insertAdjacentHTML("afterbegin", markup);
-
-filterBtn.addEventListener("click", choiceParameters);
-// checkboxColor.addEventListener("checked",choiceColor)
-// checkboxSize
-// checkboxDate
+build();
+filterBtn.addEventListener("click", takeRequest);
+clearBtn.addEventListener("click",clear);
