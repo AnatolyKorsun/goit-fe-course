@@ -99,20 +99,20 @@ const initialUsers = [
 
 const socialBook = new SocialBook(initialUsers, initialPosts);
 
-// const allUsers = socialBook.getAllUsers(initialUsers);
-// console.log('allUsers: ', allUsers);
+const allUsers = socialBook.getAllUsers(initialUsers);
+console.log('allUsers: ', allUsers);
 
-// const userByLogin = socialBook.getUserByLogin("polysweet@skynet.ze");
-// console.log('userByLogin:', userByLogin);
+const userByLogin = socialBook.getUserByLogin("polysweet@skynet.ze");
+console.log('userByLogin:', userByLogin);
 
-// const userStatus = socialBook.getUserStatus("-e51cpd4di");
-// console.log("userStatus:", userStatus);
+const userStatus = socialBook.getUserStatus("-e51cpd4di");
+console.log("userStatus:", userStatus);
 
-// const addUser = socialBook.addUser({
-//   login: "Anatoly@gmail.com",
-//   password: "Korsun"
-// });
-// console.log(socialBook.users);
+const addUser = socialBook.addUser({
+  login: "Anatoly@gmail.com",
+  password: "Korsun"
+});
+console.log(socialBook.users);
 
 // const removeById = socialBook.removeUserById("-e51cpd4di");
 // console.log(socialBook.users);
