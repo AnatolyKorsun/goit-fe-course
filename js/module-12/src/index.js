@@ -27,16 +27,9 @@ const contains = () => {
     if (!contain) {
       bookmarks.unshift({ item: `${input.value}` });
       storage.set(bookmarks);
-      location.reload();
+      build();
     } else alert("address exists");
   } else alert("enter the address");
-};
-
-const addUrl = () => {
-  if (input.value) {
-    bookmarks.unshift({ item: `${input.value}` });
-    markup();
-  }
 };
 
 const removeBtn = document.querySelectorAll(".remove");
