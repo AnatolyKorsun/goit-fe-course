@@ -32,6 +32,13 @@ const contains = () => {
   } else alert("enter the address");
 };
 
+const addUrl = () => {
+  if (input.value) {
+    bookmarks.unshift({ item: `${input.value}` });
+    markup();
+  }
+};
+
 const removeBtn = document.querySelectorAll(".remove");
 
 const removeBookmarks = event => {
