@@ -1,6 +1,6 @@
-import * as storage from './services/storage';
-import articleTmp from './templates/grid-item.hbs';
-import './styles.css';
+import * as storage from "./services/storage";
+import articleTmp from "./templates/grid-item.hbs";
+import "./styles.css";
 
 const grid = document.querySelector(".grid");
 const form = document.querySelector(".form");
@@ -23,17 +23,24 @@ if (bookmarks) {
 
 const contains = () => {
   if (input.value) {
-    const contain = bookmarks.find(elem => elem.item === input.value);
-    if (!contain) {
+    if (bookmarks.lenght === 0) {
       bookmarks.unshift({ item: `${input.value}` });
       storage.set(bookmarks);
       grid.removeChildren();
       build();
       event.preventDefault();
-    } else alert("address exists");
+    } else {
+      const contain = bookmarks.find(elem => elem.item === input.value);
+      if (!contain) {
+        bookmarks.unshift({ item: `${input.value}` });
+        storage.set(bookmarks);
+        grid.removeChildren();
+        build();
+        event.preventDefault();
+      } else alert("address exists");
+    }
   } else alert("enter the address");
 };
-
 const removeBtn = document.querySelectorAll(".remove");
 
 const removeBookmarks = event => {
