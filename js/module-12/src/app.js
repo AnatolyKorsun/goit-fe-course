@@ -1,6 +1,6 @@
+import "./styles.css";
 import * as storage from "./services/storage.js";
 import articleTmp from "./templates/grid-item.hbs";
-import "./styles.css";
 
 const grid = document.querySelector(".grid");
 const form = document.querySelector(".form");
