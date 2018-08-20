@@ -28,7 +28,7 @@ const contains = () => {
       storage.set(bookmarks);
       grid.removeChildren();
       build();
-      event.preventDefault();
+      // event.preventDefault();
     } else {
       const contain = bookmarks.find(elem => elem.item === input.value);
       if (!contain) {
@@ -36,7 +36,7 @@ const contains = () => {
         storage.set(bookmarks);
         grid.removeChildren();
         build();
-        event.preventDefault();
+        // event.preventDefault();
       } else alert("address exists");
     }
   } else alert("enter the address");
