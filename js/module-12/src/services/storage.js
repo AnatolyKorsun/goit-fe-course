@@ -1,9 +1,9 @@
 export const set = value => {
-    localStorage.setItem('finder', JSON.stringify(value));
-  };
-//   меняем тоько имя переменной
-  export const get = () => {
-    const data = localStorage.getItem('finder');
-  
-    return data ? JSON.parse(data) : null;
-  };
+  localStorage.setItem('image-finder-app', JSON.stringify(value));
+};
+
+export const get = () => {
+  const data = localStorage.getItem('image-finder-app');
+
+  return data ? JSON.parse(data) : null;
+};
