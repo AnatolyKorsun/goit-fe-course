@@ -1,4 +1,4 @@
-import * as storage from "./services/storage";
+import * as storage from "./services/storage.js";
 import articleTmp from "./templates/grid-item.hbs";
 import "./styles.css";
 
