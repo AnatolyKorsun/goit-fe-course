@@ -81,6 +81,9 @@ const handleFetch = params => {
 };
 
 const handleFormSumit = e => {
+  grid.style.display = "grid";
+  favorite.style.display = "none";
+
   e.preventDefault();
 
   resetCurrentPage();
@@ -109,25 +112,21 @@ const hanelLoadMoreClick = () => {
 };
 
 // tolik-------------------------------------
-const setStorage = (value) => {
+const setStorage = value => {
   localStorage.setItem("favorite", JSON.stringify(value));
 };
-
 
 const storageGet = () => {
   const data = localStorage.getItem("favorite");
   return data ? JSON.parse(data) : [];
 };
 
-// setStorage([]);
+let searchId;
 let favoriteImgs = storageGet();
 // let favoriteImgs = [];
-console.log('favoriteImgs',favoriteImgs);
-
-
 
 const addToFavorite = event => {
-  if (event.target.tagName === "BUTTON") {
+  if (event.target.className === "favoriteBtn") {
     const contain = favoriteImgs.find(
       elem => elem.id === event.target.previousElementSibling.id
     );
@@ -142,7 +141,6 @@ const addToFavorite = event => {
 };
 
 const articleTmp = items => {
-  console.log(items);
   return `<div class="favorite-item">
   <img src=${items.src} id="${items.id}" alt="photo">
   <button type=" submit " class="removeButton">Remove URL</button>
@@ -154,48 +152,28 @@ const markup = () => {
 };
 
 const openFavorite = () => {
+  grid.style.display = "none";
+  favorite.style.display = "grid";
+  while (favorite.childNodes.length) {
+    favorite.removeChild(favorite.firstChild);
+  }
   favorite.insertAdjacentHTML("beforeend", markup());
 };
 
 const removeFavorite = event => {
-  if (event.target.tagName === "BUTTON") {
-    let searchId = event.target.previousElementSibling.id;
+  if (event.target.className === "removeButton") {
+    searchId = event.target.previousElementSibling.id;
     console.log(searchId);
-
-    let index = favoriteImgs.findIndex(el => el.id === searchId);
-    
-    console.log(index);
-const proba =favoriteImgs;
-
-
-    proba.splice(0, 1);
-    console.log("proba", proba);
-    // const proba = favoriteImgs;
-    // proba.splice(0, 1);
-    // console.log("proba", proba);
-
-    // favorite.remove();
-    // console.log('favoriteImgs', favoriteImgs);
-
-    // setStorage(favoriteImgs);
-    // openFavorite();
-// favoriteImgs = [];
-// event.preventDefault();
-// setStorage('yahoo');
-// localStorage.clear(favorite);
-
-
-    // proba.splice(index, 1);
-
-
-    // event.target.parentNode.remove();
-
-    // console.log('searchName', searchName);
-    // console.log('index', index);
-    // console.log('favoriteImgs[ind]', favoriteImgs[index]);
-    // console.log(event.target.parentNode);
-    // console.log(favoriteImgs[index]);
-    // console.log('favoriteImgs', favoriteImgs);
+    for (let i = favoriteImgs.length - 1; i >= 0; i--) {
+      let value = favoriteImgs[i];
+      if (value !== null) {
+        if (value.id === searchId) {
+          favoriteImgs.splice(favoriteImgs.indexOf(value), 1);
+          setStorage(favoriteImgs);
+          event.target.parentNode.remove();
+        }
+      }
+    }
   }
 };
 
