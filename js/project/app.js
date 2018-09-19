@@ -3,12 +3,17 @@ const form = document.querySelector(".form");
 const input = document.querySelector(".input");
 const spinner = document.querySelector(".spinner-overlay");
 const loadMoreBtn = document.querySelector(".load-more");
-// tolik----------------------
 const favoriteBtn = document.querySelector(".menu__link");
 const favorite = document.querySelector(".favorite");
-// console.log(favoriteBtn);
-// console.log(favorite);
-// tolik----------------------
+
+// ------------------------------------------------------------
+const modalContent = document.querySelector(".modal-content");
+const modalBackdrop = document.querySelector(".js-modal-backdrop");
+const closeModal = document.querySelector(".js-close-modal");
+const modalHidden = document.querySelector(".modal-hidden");
+const modalImg = modalContent.getElementsByTagName("IMG");
+// ------------------------------------------------------------
+console.log(modalImg);
 
 let currentPage = 1;
 let currentQuery = "";
@@ -60,9 +65,7 @@ const createGridItems = items => {
 
 const updatePhotosGrid = markup => {
   grid.insertAdjacentHTML("beforeend", markup);
-  // toik----------------------
   const favoriteBtn = document.querySelectorAll(".favoriteBtn");
-  // tolik----------------------
 };
 
 const resetPhotosGrid = () => {
@@ -81,6 +84,7 @@ const handleFetch = params => {
 };
 
 const handleFormSumit = e => {
+  loadMoreBtn.style.display = "block";
   grid.style.display = "grid";
   favorite.style.display = "none";
 
@@ -111,7 +115,6 @@ const hanelLoadMoreClick = () => {
   });
 };
 
-// tolik-------------------------------------
 const setStorage = value => {
   localStorage.setItem("favorite", JSON.stringify(value));
 };
@@ -133,10 +136,29 @@ const addToFavorite = event => {
     if (!contain) {
       favoriteImgs.unshift({
         src: `${event.target.previousElementSibling.src}`,
+        // largeUrl:`${event.target.previousElementSibling.largeImageURL}`,
         id: `${event.target.previousElementSibling.id}`
       });
     }
     setStorage(favoriteImgs);
+  }
+};
+
+const openModal = event => {
+  console.log(event.target.tagName);
+
+  if (event.target.tagName === "IMG") {
+    modalHidden.classList.remove("modal-hidden");
+    if (modalContent.firstElementChild.tagName === "IMG") {
+      modalContent.removeChild(modalContent.firstElementChild);
+    }
+
+    const articleTmp = event => {
+      return `
+    <img src=${event.target.src} id="${event.target.id}" alt="photo">`;
+    };
+
+    modalContent.insertAdjacentHTML("afterbegin", articleTmp(event));
   }
 };
 
@@ -152,6 +174,8 @@ const markup = () => {
 };
 
 const openFavorite = () => {
+  loadMoreBtn.style.display = "none";
+
   grid.style.display = "none";
   favorite.style.display = "grid";
   while (favorite.childNodes.length) {
@@ -176,11 +200,25 @@ const removeFavorite = event => {
     }
   }
 };
+// -------------------------------------------------?
+
+// console.log(modalHidden);
+
+// openModals.addEventListener('click', e => modalHidden.classList.remove('modal-hidden'));
+
+closeModal.addEventListener("click", e =>
+  modalHidden.classList.add("modal-hidden")
+);
+
+modalBackdrop.addEventListener("click", e => {
+  if (modalHidden !== event.target) return;
+  modalHidden.classList.add("modal-hidden");
+});
+// -----------------------------------------------
 
 grid.addEventListener("click", addToFavorite);
+grid.addEventListener("click", openModal);
 favoriteBtn.addEventListener("click", openFavorite);
 favorite.addEventListener("click", removeFavorite);
-
-// tolik--------------------------------------
 form.addEventListener("submit", handleFormSumit);
 loadMoreBtn.addEventListener("click", hanelLoadMoreClick);
