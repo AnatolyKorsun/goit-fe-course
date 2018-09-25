@@ -56,7 +56,7 @@ const createGridItems = items => {
     (markup, item) =>
       markup +
       `<div class="grid-item">
-        <img src=${item.webformatURL} id="${item.id}" alt="photo">
+      <img src=${item.webformatURL} id="${item.id}" lowsrc="${item.largeImageURL}" alt="photo" >
         <button type="submit" class="favoriteBtn">Favorite</button>
       </div>`,
     ""
@@ -136,7 +136,6 @@ const addToFavorite = event => {
     if (!contain) {
       favoriteImgs.unshift({
         src: `${event.target.previousElementSibling.src}`,
-        // largeUrl:`${event.target.previousElementSibling.largeImageURL}`,
         id: `${event.target.previousElementSibling.id}`
       });
     }
@@ -145,8 +144,6 @@ const addToFavorite = event => {
 };
 
 const openModal = event => {
-  console.log(event.target.tagName);
-
   if (event.target.tagName === "IMG") {
     modalHidden.classList.remove("modal-hidden");
     if (modalContent.firstElementChild.tagName === "IMG") {
@@ -155,7 +152,7 @@ const openModal = event => {
 
     const articleTmp = event => {
       return `
-    <img src=${event.target.src} id="${event.target.id}" alt="photo">`;
+    <img src=${event.target.lowsrc} id="${event.target.id}" alt="photo">`;
     };
 
     modalContent.insertAdjacentHTML("afterbegin", articleTmp(event));
