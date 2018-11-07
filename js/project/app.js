@@ -7,6 +7,7 @@ const favoriteBtn = document.querySelector(".menu__link");
 const favorite = document.querySelector(".favorite");
 const prevBtn = document.querySelector(".js-prev");
 const nextBtn = document.querySelector(".js-next");
+const starBtn = document.querySelector(".img-tool-nav .btn--save");
 const modalContent = document.querySelector(".modal-content");
 const modalBackdrop = document.querySelector(".js-modal-backdrop");
 const closeModal = document.querySelector(".js-close-modal");
@@ -28,22 +29,19 @@ const showLoadMoreBtn = () => {
   }
 };
 
-
 const resetCurrentPage = () => {
   currentPage = 1;
 };
-
 
 const incrementCurrentPage = () => {
   currentPage += 1;
 };
 
-
 const scrollToBottom = () => scrollTo(0, document.body.scrollHeight);
-
 
 const fetchImages = ({ query, count, page }) => {
   const url = `https://pixabay.com/api/?image_type=photo&q=${query}&per_page=${count}&page=${page}&key=${API_KEY}`;
+
   return fetch(url)
     .then(response => {
       if (response.ok) return response.json();
@@ -54,9 +52,7 @@ const fetchImages = ({ query, count, page }) => {
     .catch(err => console.log(err));
 };
 
-
 const createGaleryItems = items => {
-  // console.log(items[0].id);
   items.forEach(element => {
     const item = {
       largeImage: element.largeImageURL,
@@ -65,9 +61,7 @@ const createGaleryItems = items => {
     };
     galeryItems.push(item);
   });
-  console.log(galeryItems);
 };
-
 
 const createGridItems = items => {
   return items.reduce(
@@ -77,7 +71,6 @@ const createGridItems = items => {
       <img src=${item.webformatURL} id="${item.id}" lowsrc="${
         item.largeImageURL
       }" alt="photo" >
-        <button type="submit" class="favoriteBtn">Favorite</button>
       </div>`,
     ""
   );
@@ -85,17 +78,15 @@ const createGridItems = items => {
 
 const updatePhotosGrid = markup => {
   grid.insertAdjacentHTML("beforeend", markup);
-  const favoriteBtn = document.querySelectorAll(".favoriteBtn");
 };
-
 
 const resetPhotosGrid = () => {
   grid.innerHTML = "";
 };
 
-
 const handleFetch = params => {
   toggleSpinner();
+
   fetchImages(params).then(photos => {
     const markup = createGridItems(photos);
     updatePhotosGrid(markup);
@@ -104,7 +95,6 @@ const handleFetch = params => {
     scrollToBottom();
   });
 };
-
 
 const handleFormSumit = e => {
   loadMoreBtn.style.display = "block";
@@ -128,7 +118,6 @@ const handleFormSumit = e => {
   showLoadMoreBtn();
 };
 
-
 const hanelLoadMoreClick = () => {
   incrementCurrentPage();
 
@@ -139,54 +128,44 @@ const hanelLoadMoreClick = () => {
   });
 };
 
-
 const setStorage = value => {
   localStorage.setItem("favorite", JSON.stringify(value));
 };
-
 
 const storageGet = () => {
   const data = localStorage.getItem("favorite");
   return data ? JSON.parse(data) : [];
 };
 
-
 let searchId;
 let favoriteImgs = storageGet();
-// let favoriteImgs = [];
 
 
-const addToFavorite = event => {
-  if (event.target.className === "favoriteBtn") {
-    const contain = favoriteImgs.find(
-      elem => elem.id === event.target.previousElementSibling.id
-    );
-    if (!contain) {
-      favoriteImgs.unshift({
-        src: `${event.target.previousElementSibling.src}`,
-        id: `${event.target.previousElementSibling.id}`
-      });
-    }
-    setStorage(favoriteImgs);
-  }
+const addToFavoriteBig = () => {
+     const contain = favoriteImgs.find(elem => elem.id === modalContent.firstElementChild.id);
+ if (!contain) {
+  favoriteImgs.unshift({
+     src: `${modalContent.firstElementChild.src}`,
+     id: `${modalContent.firstElementChild.id}`
+   });
+ setStorage(favoriteImgs);
+ }
 };
 
-
 const openModal = (selectedItem) => {
-    modalHidden.classList.remove("modal-hidden");
-    if (modalContent.firstElementChild.tagName === "IMG") {
-      modalContent.removeChild(modalContent.firstElementChild);
-    }
-    const articleTmp = event => {
-      return `
-    <img src=${selectedItem.largeImage} id="${event.target.id}" alt="photo">`;
-    };
-    modalContent.insertAdjacentHTML("afterbegin", articleTmp(event));
+  modalHidden.classList.remove("modal-hidden");
+  if (modalContent.firstElementChild.tagName === "IMG") {
+    modalContent.removeChild(modalContent.firstElementChild);
+  }
+  const articleTmp = event => {
+    return `
+  <img src=${selectedItem.largeImage} id="${event.target.id}" alt="photo">`;
+  };
+  modalContent.insertAdjacentHTML("afterbegin", articleTmp(event));
 };
 
 let position;
 let selectedItem;
-
 
 const chooseItem = () =>{
   if (event.target.tagName === "IMG") {
@@ -211,20 +190,16 @@ const nextImage = () => {
   position = position +1;
   openModal(selectedItem)}
 };
-
-
 const articleTmp = items => {
-  return `<div class="favorite-item">
-  <img src=${items.src} id="${items.id}" alt="photo">
-  <button type=" submit " class="removeButton">Remove URL</button>
+  return `<div class="favorite-item grid-item">
+     <img src=${items.src} id="${items.id}" alt="photo">
+     <button type=" submit " class="removeButton"></button>
 </div>`;
 };
-
 
 const markup = () => {
   return favoriteImgs.reduce((acc, element) => acc + articleTmp(element), "");
 };
-
 
 const openFavorite = () => {
   loadMoreBtn.style.display = "none";
@@ -237,11 +212,9 @@ const openFavorite = () => {
   favorite.insertAdjacentHTML("beforeend", markup());
 };
 
-
 const removeFavorite = event => {
   if (event.target.className === "removeButton") {
     searchId = event.target.previousElementSibling.id;
-    console.log(searchId);
     for (let i = favoriteImgs.length - 1; i >= 0; i--) {
       let value = favoriteImgs[i];
       if (value !== null) {
@@ -255,7 +228,6 @@ const removeFavorite = event => {
   }
 };
 
-
 closeModal.addEventListener("click", e =>
   modalHidden.classList.add("modal-hidden")
 );
@@ -265,10 +237,11 @@ modalBackdrop.addEventListener("click", e => {
   modalHidden.classList.add("modal-hidden");
 });
 
+
 prevBtn.addEventListener("click", previousImage);
 nextBtn.addEventListener("click", nextImage);
-grid.addEventListener("click", addToFavorite);
 grid.addEventListener("click", chooseItem);
+starBtn.addEventListener("click", addToFavoriteBig);
 favoriteBtn.addEventListener("click", openFavorite);
 favorite.addEventListener("click", removeFavorite);
 form.addEventListener("submit", handleFormSumit);

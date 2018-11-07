@@ -100,32 +100,24 @@ const size = document.querySelectorAll(".js-size");
 const date = document.querySelectorAll(".js-date");
 const root = document.querySelector(".root");
 
-
 const filter = { size: [], color: [], release_date: [] };
 let laptopsFiltred = [];
 
-const removeCart= ()=>{
-  const laptopsCart = document.querySelectorAll(".laptops-cart");
-console.log("laptopsCart", laptopsCart.length );
-if(laptopsCart.length !==0){
-  laptopsCart.remove();
-}
-  
-
-}
+const removeCart = () => {
+  while (root.firstChild) {
+    root.removeChild(root.firstChild);
+  }
+};
 
 const build = () => {
-  console.log(root);
-  // root.removeChildren();
+  if (root.firstChild) {
+    console.log("wha");
+    removeCart();
+  }
   const source = document.querySelector("#cart-id").innerHTML.trim();
   const template = Handlebars.compile(source);
   const markup = template(laptopsFiltred);
-  console.log(markup);
-  // root.removeChild();
   root.insertAdjacentHTML("afterbegin", markup);
-  removeCart()
-  
-  
 };
 
 const filterLaptops = () => {
@@ -139,28 +131,14 @@ const filterLaptops = () => {
       laptopsFiltred.push(value);
     }
   });
-  // console.log(laptopsFiltred);
-  // event.preventDefault();
   build();
-  
-
 };
 
 const takeRequest = () => {
-// const 
-
-
-
-// filter.color = [];
-  // filter.size = [];
-  // filter.release_date= [];
   filter.color.splice(0);
   filter.size.splice(0);
-  filter.release_date.splice(0)
+  filter.release_date.splice(0);
   color.forEach(value => {
-    // console.log(value);
-    // console.log(value.checked);
-    // console.log(value.defaultValue);
     if (value.checked === true) filter.color.push(value.defaultValue);
   });
   size.forEach(value => {
@@ -169,29 +147,9 @@ const takeRequest = () => {
   date.forEach(value => {
     if (value.checked === true) filter.release_date.push(value.defaultValue);
   });
-  // console.log(filter.color);
-  console.log("filter", filter);
   event.preventDefault();
   filterLaptops();
 };
 
-
-build();
-
-
-
-
-
-
-
-const clear = () => {
-  // location.reload();
-};
-
-
-
-
-
-
 filterBtn.addEventListener("click", takeRequest);
-clearBtn.addEventListener("click", clear);
+clearBtn.addEventListener("click", removeCart);
